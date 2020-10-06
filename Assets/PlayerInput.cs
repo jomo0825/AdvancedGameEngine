@@ -16,6 +16,8 @@ public class PlayerInput : MonoBehaviour
     public float targetDright;
     public float curVelocityDup;
     public float curVelocityDright;
+    public float Dmag;
+    public Vector3 Dvec;
 
     void Update()
     {
@@ -28,7 +30,12 @@ public class PlayerInput : MonoBehaviour
         Dup = Mathf.SmoothDamp(Dup, targetDup, ref curVelocityDup, 0.1f);
         Dright = Mathf.SmoothDamp(Dright, targetDright, ref curVelocityDright, 0.1f);
 
-        transform.position = new Vector3(Dright, 0, Dup);
+        Dmag = Mathf.Sqrt(Dup * Dup + Dright * Dright);
+        Dvec = new Vector3(Dright, 0, Dup).normalized;
+
+        //transform.position = new Vector3(Dright, 0, Dup);
     }
 }
+
+
 
