@@ -9,6 +9,7 @@ public class PlayerInput : MonoBehaviour
     public string keyDown = "s";
     public string keyLeft = "a";
     public string keyRight = "d";
+    public string keyA = "j";
 
     public float Dup;
     public float Dright;
@@ -18,6 +19,7 @@ public class PlayerInput : MonoBehaviour
     public float curVelocityDright;
     public float Dmag;
     public Vector3 Dvec;
+    public bool run;
 
     void Update()
     {
@@ -34,6 +36,8 @@ public class PlayerInput : MonoBehaviour
         Dvec = new Vector3(Dright, 0, Dup).normalized;
 
         //transform.position = new Vector3(Dright, 0, Dup);
+
+        run = Input.GetKey(keyA);
     }
 }
 

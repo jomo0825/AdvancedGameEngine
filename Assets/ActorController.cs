@@ -31,19 +31,19 @@ public class ActorController : MonoBehaviour
     // Update is called once per frame, 60Hz
     void Update()
     {
-        anim.SetFloat("forward", pi.Dmag);
+        anim.SetFloat("forward", pi.Dmag * ((pi.run) ? 2.0f : 1.0f));
 
         if (pi.Dmag > 0.01f)
         {
             model.transform.forward = this.transform.TransformVector(pi.Dvec);
         }
 
-        movingVec = pi.Dmag * model.transform.forward * walkSpeed;
+        movingVec = pi.Dmag * model.transform.forward * walkSpeed * ((pi.run) ? 3.0f : 1.0f);
     }
 
     // 50Hz
     void FixedUpdate()
     {
-        rigid.velocity = movingVec;
+        rigid.velocity = new Vector3(movingVec.x, rigid.velocity.y, movingVec.z);
     }
 }
