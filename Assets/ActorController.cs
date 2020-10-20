@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿    using UnityEngine;
 
 public class ActorController : MonoBehaviour
 {
@@ -11,7 +11,6 @@ public class ActorController : MonoBehaviour
     private Animator anim;
     private Rigidbody rigid;
     private Vector3 movingVec;
-
 
     // Start is called before the first frame update
     void OnEnable()
@@ -31,11 +30,13 @@ public class ActorController : MonoBehaviour
     // Update is called once per frame, 60Hz
     void Update()
     {
-        anim.SetFloat("forward", pi.Dmag * ((pi.run) ? 2.0f : 1.0f));
+
+        anim.SetFloat("forward", Mathf.Lerp(anim.GetFloat("forward"), pi.Dmag * ((pi.run) ? 2.0f : 1.0f), 0.05f));
 
         if (pi.Dmag > 0.01f)
         {
-            model.transform.forward = this.transform.TransformVector(pi.Dvec);
+            model.transform.forward = Vector3.Slerp(model.transform.forward, this.transform.TransformVector(pi.Dvec), 0.05f);
+            //model.transform.forward = this.transform.TransformVector(pi.Dvec);
         }
 
         movingVec = pi.Dmag * model.transform.forward * walkSpeed * ((pi.run) ? 3.0f : 1.0f);
