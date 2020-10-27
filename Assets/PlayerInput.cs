@@ -56,7 +56,7 @@ public class PlayerInput : MonoBehaviour
         //transform.position = new Vector3(tempDright, 0, tempDup);
 
         run = Input.GetKey(keyA);
-
+        
         newJump = Input.GetKey(keyJump);
         if (newJump != lastJump)
         {
@@ -76,7 +76,6 @@ public class PlayerInput : MonoBehaviour
         {
             jump = false;
         }
-
         lastJump = newJump;
 
     }
