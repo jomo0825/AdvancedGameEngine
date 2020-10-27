@@ -32,13 +32,27 @@ public class PlayerInput : MonoBehaviour
     public float Dmag;
     public Vector3 Dvec;
     public bool run;
+    public bool inputEnable = true;
 
 
     //成員方法 member methods
     void Update()
     {
-        targetDup = ((Input.GetKey(keyUp)) ? 1.0f : 0) - ((Input.GetKey(keyDown)) ? 1.0f : 0);
-        targetDright = ((Input.GetKey(keyRight)) ? 1.0f : 0) - ((Input.GetKey(keyLeft)) ? 1.0f : 0);
+        if (inputEnable == true)
+        {
+            targetDup = ((Input.GetKey(keyUp)) ? 1.0f : 0) - ((Input.GetKey(keyDown)) ? 1.0f : 0);
+            targetDright = ((Input.GetKey(keyRight)) ? 1.0f : 0) - ((Input.GetKey(keyLeft)) ? 1.0f : 0);
+
+            run = Input.GetKey(keyA);
+            newJump = Input.GetKey(keyJump);
+        }
+        else
+        {
+            targetDup = 0;
+            targetDright = 0;
+            run = false;
+            newJump = false;
+        }
 
         //tempDup = Mathf.Lerp (tempDup, targetDup, 0.1f);
         //tempDright = Mathf.Lerp (tempDright, targetDright, 0.1f);
@@ -54,10 +68,7 @@ public class PlayerInput : MonoBehaviour
         Dvec = new Vector3(Dright, 0, Dup).normalized;
 
         //transform.position = new Vector3(tempDright, 0, tempDup);
-
-        run = Input.GetKey(keyA);
-        
-        newJump = Input.GetKey(keyJump);
+     
         if (newJump != lastJump)
         {
             //print("跳吧!");

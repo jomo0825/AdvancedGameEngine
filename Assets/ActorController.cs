@@ -11,6 +11,7 @@ public class ActorController : MonoBehaviour
     private Animator anim;
     private Rigidbody rigid;
     private Vector3 movingVec;
+    private Vector3 thrustVec;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -36,6 +37,7 @@ public class ActorController : MonoBehaviour
         if (pi.jump)
         {
             anim.SetTrigger("jump");
+            //thrustVec = new Vector3(0, 10.0f, 0);   //加在這裡可以無限跳躍，這是不對的，應該加在狀態機的Enter位置
         }
 
         if (pi.Dmag > 0.01f)
@@ -50,10 +52,18 @@ public class ActorController : MonoBehaviour
     // 50Hz
     void FixedUpdate()
     {
-        rigid.velocity = new Vector3(movingVec.x, rigid.velocity.y, movingVec.z);
+        rigid.velocity = new Vector3(movingVec.x, rigid.velocity.y, movingVec.z) + thrustVec;
+        thrustVec = Vector3.zero;
     }
 
-    public void OnJumpEnter() {
+    public void OnJumpEnter()
+    {
         print("起跳囉~~~");
+        thrustVec = new Vector3(0, 10.0f, 0);
+    }
+
+    public void OnJumpExit()
+    {
+        print("降落囉~~~");
     }
 }
