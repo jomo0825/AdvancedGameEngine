@@ -6,6 +6,7 @@ public class ActorController : MonoBehaviour
     public PlayerInput pi;
     public GameObject model;
     public float walkSpeed = 1.0f;
+    public bool lockPlanar = false;
 
     // private variables   
     private Animator anim;
@@ -40,13 +41,16 @@ public class ActorController : MonoBehaviour
             //thrustVec = new Vector3(0, 10.0f, 0);   //加在這裡可以無限跳躍，這是不對的，應該加在狀態機的Enter位置
         }
 
-        if (pi.Dmag > 0.01f)
+        if (lockPlanar == false)
         {
-            model.transform.forward = Vector3.Slerp(model.transform.forward, this.transform.TransformVector(pi.Dvec), 0.05f);
-            //model.transform.forward = this.transform.TransformVector(pi.Dvec);
-        }
+            if (pi.Dmag > 0.01f)
+            {
+                model.transform.forward = Vector3.Slerp(model.transform.forward, this.transform.TransformVector(pi.Dvec), 0.05f);
+                //model.transform.forward = this.transform.TransformVector(pi.Dvec);
+            }
 
-        movingVec = pi.Dmag * model.transform.forward * walkSpeed * ((pi.run) ? 3.0f : 1.0f);
+            movingVec = pi.Dmag * model.transform.forward * walkSpeed * ((pi.run) ? 3.0f : 1.0f);
+        }
     }
 
     // 50Hz
@@ -58,12 +62,26 @@ public class ActorController : MonoBehaviour
 
     public void OnJumpEnter()
     {
-        print("起跳囉~~~");
-        thrustVec = new Vector3(0, 10.0f, 0);
+        lockPlanar = true;
+        pi.inputEnable = false;
+        //print("起跳囉~~~");
+        thrustVec = new Vector3(0, 5.0f, 0);
     }
 
     public void OnJumpExit()
     {
-        print("降落囉~~~");
+        lockPlanar = false;
+        pi.inputEnable = true;
+        //print("降落囉~~~");
+    }
+
+    public void IsGround() {
+        print("is on ground~");
+        anim.SetBool("isGround", true);
+    }
+
+    public void IsNotGround(){
+        print("is not on ground!!!!!!!!!!!!!!!");
+        anim.SetBool("isGround", false);
     }
 }
