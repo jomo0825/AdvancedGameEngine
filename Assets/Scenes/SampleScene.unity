@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 355732765}
   - component: {fileID: 355732764}
   - component: {fileID: 355732763}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 710134066}
   - component: {fileID: 710134065}
   - component: {fileID: 710134064}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,8 +425,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710134063}
   m_LocalRotation: {x: -0.25881982, y: -0, z: -0, w: 0.96592563}
-  m_LocalPosition: {x: -1.22, y: 0.94, z: 3.33}
-  m_LocalScale: {x: 5, y: 0.5, z: 8.360499}
+  m_LocalPosition: {x: -1.22, y: 3.2, z: -0.2}
+  m_LocalScale: {x: 5, y: 0.5, z: 15.098226}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -512,7 +512,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1717906628}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 32.884003, y: 0, z: 0}
 --- !u!1 &1023834944
 GameObject:
@@ -526,7 +526,7 @@ GameObject:
   - component: {fileID: 1023834947}
   - component: {fileID: 1023834946}
   - component: {fileID: 1023834945}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 1410544952}
   - component: {fileID: 1410544951}
   - component: {fileID: 1410544950}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -712,7 +712,7 @@ GameObject:
   - component: {fileID: 1436260782}
   - component: {fileID: 1436260781}
   - component: {fileID: 1436260780}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 1687341573}
   - component: {fileID: 1687341572}
   - component: {fileID: 1687341571}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -886,6 +886,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &1691738650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1691738651}
+  - component: {fileID: 1691738652}
+  m_Layer: 0
+  m_Name: sensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1691738651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691738650}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1717906628}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1691738652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691738650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efff51a347f7314c96869fdf2b75586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  col: {fileID: 1717906627}
+  onGroundOffset: {x: 0, y: -0.1, z: 0}
 --- !u!1 &1717906625
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,10 +988,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1717906625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -7.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 112584457}
+  - {fileID: 1691738651}
   - {fileID: 963194228}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -966,6 +1012,7 @@ MonoBehaviour:
   pi: {fileID: 0}
   model: {fileID: 0}
   walkSpeed: 1
+  lockPlanar: 0
 --- !u!1001 &1766431749
 PrefabInstance:
   m_ObjectHideFlags: 0
