@@ -35,6 +35,12 @@ public class ActorController : MonoBehaviour
 
         anim.SetFloat("forward", Mathf.Lerp(anim.GetFloat("forward"), pi.Dmag * ((pi.run) ? 2.0f : 1.0f), 0.05f));
 
+        if (rigid.velocity.magnitude > 5.0f)
+        {
+            anim.SetTrigger("roll");
+        }
+
+
         if (pi.jump)
         {
             anim.SetTrigger("jump");
@@ -63,25 +69,35 @@ public class ActorController : MonoBehaviour
     public void OnJumpEnter()
     {
         lockPlanar = true;
-        pi.inputEnable = false;
+        pi.inputEnable = false;  //以上兩件事可以鎖死角色移動
         //print("起跳囉~~~");
-        thrustVec = new Vector3(0, 5.0f, 0);
+        thrustVec = new Vector3(0, 4.0f, 0);
     }
 
     public void OnJumpExit()
     {
-        lockPlanar = false;
-        pi.inputEnable = true;
         //print("降落囉~~~");
     }
 
     public void IsGround() {
-        print("is on ground~");
+        //print("is on ground~");
         anim.SetBool("isGround", true);
     }
 
     public void IsNotGround(){
-        print("is not on ground!!!!!!!!!!!!!!!");
+        //print("is not on ground!!!!!!!!!!!!!!!");
         anim.SetBool("isGround", false);
+    }
+
+    public void OnFallingEnter() {
+        //print("on falling enter!!!!!");
+        lockPlanar = true;
+        pi.inputEnable = false;
+    }
+
+    public void OnLocomotionEnter() {
+        lockPlanar = false;
+        pi.inputEnable = true;  //以上兩件事可以解鎖角色移動
+        anim.ResetTrigger("roll");
     }
 }
