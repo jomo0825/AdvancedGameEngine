@@ -98,6 +98,6 @@ public class ActorController : MonoBehaviour
     public void OnLocomotionEnter() {
         lockPlanar = false;
         pi.inputEnable = true;  //以上兩件事可以解鎖角色移動
-        anim.ResetTrigger("roll ");
+        anim.ResetTrigger("roll");
     }
 }
