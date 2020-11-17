@@ -98,7 +98,6 @@ public class PlayerInput : MonoBehaviour
             jump = false;
         }
         lastJump = newJump;
-
     }
 
     private Vector2 Mapping_Elliptical(float tempDright, float tempDup)
