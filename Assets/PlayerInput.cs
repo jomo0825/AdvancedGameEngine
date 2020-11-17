@@ -13,6 +13,11 @@ public class PlayerInput : MonoBehaviour
     public string keyA = "j";
     public string keyJump = "k";
 
+    public string keyJup = "up";
+    public string keyJdown = "down";
+    public string keyJleft = "left";
+    public string keyJright = "right";
+
     //2. 一次性輸入
     private bool lastJump = false;
     private bool newJump = false;
@@ -25,6 +30,8 @@ public class PlayerInput : MonoBehaviour
     public float tempDright;
     public float Dup;
     public float Dright;
+    public float Jup;
+    public float Jright;
     public float targetDup;
     public float targetDright;
     public float curVelocityDup;
@@ -42,6 +49,9 @@ public class PlayerInput : MonoBehaviour
         {
             targetDup = ((Input.GetKey(keyUp)) ? 1.0f : 0) - ((Input.GetKey(keyDown)) ? 1.0f : 0);
             targetDright = ((Input.GetKey(keyRight)) ? 1.0f : 0) - ((Input.GetKey(keyLeft)) ? 1.0f : 0);
+
+            Jup = ((Input.GetKey(keyJup)) ? 1.0f : 0) - ((Input.GetKey(keyJdown)) ? 1.0f : 0);
+            Jright = ((Input.GetKey(keyJright)) ? 1.0f : 0) - ((Input.GetKey(keyJleft)) ? 1.0f : 0);
 
             run = Input.GetKey(keyA);
             newJump = Input.GetKey(keyJump);
