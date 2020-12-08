@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public PlayerInput pi;
-
+    [Header("=== 請填入以下參數 ===")]
     public GameObject cameraHandle;
+
+    [Header("=== 以下部分程式碼會自動抓取 ===")]
+    public PlayerInput pi;
     public GameObject playerHandle;
     public GameObject model;
+    public GameObject cameraPos;
 
     private Vector3 tempVec;
 
     // Start is called before the first frame update
     void Start()
     {
-        cameraHandle = transform.parent.gameObject;
+        //cameraHandle = transform.parent.gameObject;
         playerHandle = cameraHandle.transform.parent.gameObject;
         model = playerHandle.GetComponent<ActorController>().model;
 
         pi = playerHandle.GetComponent<PlayerInput>();
+
+        cameraPos = cameraHandle.transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -35,6 +40,13 @@ public class CameraController : MonoBehaviour
         cameraHandle.transform.localEulerAngles = tempVec;
 
         model.transform.eulerAngles = tempModelAngles;
+    }
+
+    void FixedUpdate ()
+    {
+        transform.position = Vector3.Lerp(transform.position, cameraPos.transform.position, 0.1f);
+        //transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, cameraPos.transform.eulerAngles, 0.1f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, cameraPos.transform.rotation, 0.1f);
     }
 }
 

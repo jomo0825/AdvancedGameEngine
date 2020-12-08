@@ -47,8 +47,11 @@ public class PlayerInput : MonoBehaviour
     {
         if (inputEnable == true)
         {
-            targetDup = ((Input.GetKey(keyUp)) ? 1.0f : 0) - ((Input.GetKey(keyDown)) ? 1.0f : 0);
-            targetDright = ((Input.GetKey(keyRight)) ? 1.0f : 0) - ((Input.GetKey(keyLeft)) ? 1.0f : 0);
+            //targetDup = ((Input.GetKey(keyUp)) ? 1.0f : 0) - ((Input.GetKey(keyDown)) ? 1.0f : 0);
+            //targetDright = ((Input.GetKey(keyRight)) ? 1.0f : 0) - ((Input.GetKey(keyLeft)) ? 1.0f : 0);
+
+            targetDup = Input.GetAxis("Dup");
+            targetDright = Input.GetAxis("Dright");
 
             Jup = ((Input.GetKey(keyJup)) ? 1.0f : 0) - ((Input.GetKey(keyJdown)) ? 1.0f : 0);
             Jright = ((Input.GetKey(keyJright)) ? 1.0f : 0) - ((Input.GetKey(keyJleft)) ? 1.0f : 0);
