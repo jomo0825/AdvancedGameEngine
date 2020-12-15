@@ -1115,9 +1115,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 1717906625}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97720a34749ed6c47b4d493a41e2cb2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 35a1858a952421b4189bedd9913d2659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyUp: 
+  keyDown: 
+  keyLeft: 
+  keyRight: 
+  keyA: 
+  keyJump: 
+  keyJup: 
+  keyJdown: 
+  keyJleft: 
+  keyJright: 
+  jump: 0
+  tempDup: 0
+  tempDright: 0
+  Dup: 0
+  Dright: 0
+  Jup: 0
+  Jright: 0
+  targetDup: 0
+  targetDright: 0
+  curVelocityDup: 0
+  curVelocityDright: 0
+  Dmag: 0
+  Dvec: {x: 0, y: 0, z: 0}
+  run: 0
+  inputEnable: 1
 --- !u!1001 &1766431749
 PrefabInstance:
   m_ObjectHideFlags: 0
