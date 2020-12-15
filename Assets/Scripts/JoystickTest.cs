@@ -16,10 +16,10 @@ public class JoystickTest : MonoBehaviour
         //print("Jright value:" + Input.GetAxis("Jright"));
         //print("Jup value:" + Input.GetAxis("Jup"));
 
-        print("btn0 value:" + Input.GetKey("joystick button 0"));
-        print("btn1 value:" + Input.GetKey("joystick button 1"));
-        print("btn2 value:" + Input.GetKey("joystick button 2"));
-        print("btn3 value:" + Input.GetKey("joystick button 3"));
+        //print("btn0 value:" + Input.GetKey("joystick button 0"));
+        //print("btn1 value:" + Input.GetKey("joystick button 1"));
+        //print("btn2 value:" + Input.GetKey("joystick button 2"));
+        //print("btn3 value:" + Input.GetKey("joystick button 3"));
 
     }
 }

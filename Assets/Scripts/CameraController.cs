@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     public GameObject cameraHandle;
 
     [Header("=== 以下部分程式碼會自動抓取 ===")]
+    //public KeyboardInput pi;
     public PlayerInput pi;
     public GameObject playerHandle;
     public GameObject model;
@@ -22,7 +23,7 @@ public class CameraController : MonoBehaviour
         playerHandle = cameraHandle.transform.parent.gameObject;
         model = playerHandle.GetComponent<ActorController>().model;
 
-        pi = playerHandle.GetComponent<PlayerInput>();
+        pi = playerHandle.GetComponent<JoystickInput>();
 
         cameraPos = cameraHandle.transform.GetChild(0).gameObject;
     }

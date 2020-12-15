@@ -3,6 +3,7 @@
 public class ActorController : MonoBehaviour
 {
     //public variables
+    //public KeyboardInput pi;
     public PlayerInput pi;
     public GameObject model;
     public float walkSpeed = 1.0f;
@@ -24,7 +25,7 @@ public class ActorController : MonoBehaviour
             return;
         }
 
-        pi = GetComponent<PlayerInput>()? GetComponent<PlayerInput>(): gameObject.AddComponent<PlayerInput>();
+        pi = GetComponent<PlayerInput>()? GetComponent<PlayerInput>(): gameObject.AddComponent<KeyboardInput>();
         model = anim.gameObject;
         rigid = GetComponent<Rigidbody>();
     }
@@ -49,7 +50,7 @@ public class ActorController : MonoBehaviour
 
         if (lockPlanar == false)
         {
-            if (pi.Dmag > 0.01f)
+            if (pi.Dmag > 0.1f)
             {
                 model.transform.forward = Vector3.Slerp(model.transform.forward, this.transform.TransformVector(pi.Dvec), 0.05f);
                 //model.transform.forward = this.transform.TransformVector(pi.Dvec);
