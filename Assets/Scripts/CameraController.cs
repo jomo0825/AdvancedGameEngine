@@ -23,7 +23,7 @@ public class CameraController : MonoBehaviour
         playerHandle = cameraHandle.transform.parent.gameObject;
         model = playerHandle.GetComponent<ActorController>().model;
 
-        pi = playerHandle.GetComponent<JoystickInput>();
+        pi = playerHandle.GetComponent<PlayerInput>();
 
         cameraPos = cameraHandle.transform.GetChild(0).gameObject;
     }
